@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<config> 
+<!-- general descriptions -->
+<gen> 
+   <beg> 2021-01-03 00:00:00 </beg> <!-- beg time -->
+   <end> 2021-01-03 23:55:00 </end> <!-- end time -->
+   <sys> GPS BDS GAL </sys>         <!-- GNSS system: GPS/BDS/GAL -->
+   <rec> SOLO        </rec>         <!-- processing sites -->
+   <int> 30 			</int>         <!-- sampling interval --> 
+   <sat_rm> </sat_rm> 			   <!-- exclude certain satellites during IFCB estimation --> 
+</gen> 
+<!-- input descriptions -->
+<inputs> 
+   <rinexn> brdm0030.21p </rinexn> <!-- obs RINEX decoder -->
+   <rinexo> solo0030.21o </rinexo> <!-- nav RINEX decoder -->
+   <biabern>CAS0MGXRAP_20210030000_01D_01D_DCB.BSX</biabern> <!-- code bias decoder -->
+</inputs> 
+<!-- system descriptions -->   
+<gps> 
+   <band>1 2 5</band>  <!-- band used in GPS observations -->
+   <freq>1 2 3</freq>  <!-- order of using GPS band in combined observations -->
+</gps> 
+<bds> 
+   <band>2 7 6</band>  <!-- band used in BDS observations -->
+   <freq>1 2 3</freq>  <!-- order of using BDS band in combined observations -->
+</bds> 
+<gal> 
+   <band>1 5 7</band>  <!-- band used in GAL observations -->
+   <freq>1 2 3</freq>  <!-- order of using GAL band in combined observations -->
+</gal> 
+<!-- preedit setting descriptions-->
+<preedit>
+	<minimum_elev> 7.0 </minimum_elev>           <!-- cutoff satellite elevation [unit:degrees] -->
+	<check_mw mw_limit="3.0" valid="true"/>      <!-- MW combination limitation [unit:cycles] -->
+	<check_gf gf_limit="0.1" valid="true"/>      <!-- GF combination limitation [unit:meters] -->
+	<check_gap gap_limit="20" valid="true"/>     <!-- gapped epoch limitation [unit:epoch] -->
+	<check_short short_limit="10" valid="true"/> <!-- short epoch limitation [unit:epoch] -->
+</preedit>
+<!-- output descriptions  -->
+<outputs append="false" verb="0"> 
+   <log> LOGRT.log </log>          <!-- log encoder -->
+   <ifcb> ifcb_2021003_GCE </ifcb> <!-- upd encoder --> 
+</outputs> 
+</config> 
